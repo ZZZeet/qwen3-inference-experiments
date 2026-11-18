@@ -4,7 +4,7 @@ This repository contains my inference work for a team LLM course project. I desi
 
 ## Notebook
 
-[`Inference_v2.ipynb`](Inference_v2.ipynb) contains the benchmark code and a short analysis.
+[`inference_experiments.ipynb`](inference_experiments.ipynb) contains the benchmark code and a short analysis.
 
 ## KV Cache Results
 
