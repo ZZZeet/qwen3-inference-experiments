@@ -4,7 +4,7 @@ This repository contains my inference work for a team LLM course project. I desi
 
 ## Notebook
 
-[`inference_experiments.ipynb`](inference_experiments.ipynb) contains the benchmark code, output charts, and a short analysis.
+[`Inference_v2.ipynb`](Inference_v2.ipynb) contains the benchmark code and a short analysis.
 
 ## KV Cache Results
 
@@ -19,6 +19,8 @@ I ran the same 900 questions three times per setting on an NVIDIA T4 in FP16, us
 | Exact match (%) | 77.00 | 76.89 |
 
 Caching increased throughput by about **22%** and raised peak extra GPU memory by **348.51 MiB**. The decoded answers matched on **899 of 900 questions**.
+
+![KV cache benchmark results](results-KV%20cache/benchmark.png)
 
 ## Reproduce the Benchmark
 
