@@ -1,6 +1,6 @@
 # Qwen3-0.6B Inference Experiments
 
-This repository contains my inference work for a team LLM course project. I designed and ran a KV cache benchmark to measure how caching affects generation time, throughput, GPU memory, and answer quality. The benchmark uses the published Qwen3-0.6B checkpoint with a LoRA adapter and the SQuAD 1.1 test split from our [team repository](https://github.com/sunweiyi2026-ship-it/LLM-project).
+This repository contains three inference experiments for a team LLM course project. The experiments evaluate KV caching, batch size, and decoding strategy using the published Qwen3-0.6B checkpoint with a LoRA adapter and the 900-question MRQA 2019 SQuAD 1.1 test split from our [team repository](https://github.com/sunweiyi2026-ship-it/LLM-project).
 
 ## Notebook
 
@@ -21,6 +21,18 @@ I ran the same 900 questions three times per setting on an NVIDIA T4 in FP16, us
 Caching increased throughput by about **22%** and raised peak extra GPU memory by **348.51 MiB**. The decoded answers matched on **899 of 900 questions**.
 
 ![KV cache benchmark results](results-KV%20cache/benchmark.png)
+
+## Batch Size Sweep
+
+I tested batch sizes of 1, 4, 8, and 16 with KV caching enabled and greedy decoding. Each batch size ran three times on the full test split. The figure shows how batch size affects generation throughput and peak allocated GPU memory.
+
+![Generation throughput and peak allocated GPU memory by batch size](results-batch%20size/batch_size_benchmark.png)
+
+## Decoding Strategy
+
+I compared greedy decoding with beam search at widths 2 and 4. Each strategy ran once on the full test split with KV caching enabled and a batch size of 4. The figure compares total generation time and answer quality, measured by exact match (EM) and token-level F1.
+
+![Total generation time, exact match, and F1 by decoding strategy](results-decoding%20strategy/decoding_strategy_benchmark.png)
 
 ## Reproduce the Benchmark
 
